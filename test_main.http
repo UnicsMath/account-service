@@ -9,3 +9,15 @@ GET http://127.0.0.1:8000/hello/User
 Accept: application/json
 
 ###
+### Authorization by token, part 1. Retrieve and save token.
+
+POST http://127.0.0.1:8000/token
+Content-Type: application/x-www-form-urlencoded
+
+username = test@test2.test &
+password = test2
+
+###
+
+GET http://localhost:8000/users/me/
+Accept: application/json
