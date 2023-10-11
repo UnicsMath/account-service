@@ -1,0 +1,7 @@
+services:
+  app:
+    container_name: account-microservice-container
+    build: .
+    image: account-microservice-image:latest
+    ports:
+      - 8080:80
