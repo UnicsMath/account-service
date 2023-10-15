@@ -1,4 +1,4 @@
-FROM python:3.12
+FROM python:alpine
 
 WORKDIR /account_service
 
@@ -8,4 +8,6 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 COPY . .
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+EXPOSE 6800
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "6800"]

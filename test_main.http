@@ -4,11 +4,6 @@ GET http://127.0.0.1:8000/
 Accept: application/json
 
 ###
-
-GET http://127.0.0.1:8000/hello/User
-Accept: application/json
-
-###
 ### Authorization by token, part 1. Retrieve and save token.
 
 POST http://127.0.0.1:8000/token

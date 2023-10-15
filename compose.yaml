@@ -1,7 +1,7 @@
 services:
   app:
-    container_name: account-microservice-container
+    container_name: account-service-container
     build: .
-    image: account-microservice-image:latest
+    image: secpriano-unicsmath:account-service
     ports:
-      - 8080:80
+      - 6800:6800
