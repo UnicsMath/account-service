@@ -1,5 +1,15 @@
-from sqlmodel import SQLModel, create_engine
-from models.Account import Account
+from os import getenv
 
-engine = create_engine("sqlite://", echo=True)
+from dotenv import load_dotenv
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
+load_dotenv(".env")
+
+SQLALCHEMY_DATABASE_URL = getenv("DATABASE_URL")
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=True)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+Base = declarative_base()
