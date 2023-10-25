@@ -5,9 +5,9 @@ name: FastAPI (Python[3.12]-based Web API microframework)
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "secpriano-ci-cd" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "secpriano-ci-cd" ]
 
 permissions:
   contents: read
