@@ -48,7 +48,7 @@ jobs:
       - name: Reinstall Werkzeug
         run: |
           pip uninstall werkzeug
-          pip install werkzeug
+          pip install Werkzeug==2.3.x
 
       - name: Run Pysa
         uses: facebook/pysa-action@f46a63777e59268613bd6e2ff4e29f144ca9e88b
