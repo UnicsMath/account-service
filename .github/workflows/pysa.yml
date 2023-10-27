@@ -17,9 +17,9 @@ name: Pysa
 on:
   workflow_dispatch:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "dev" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "dev" ]
   schedule:
     - cron: '0 6 * * 6'
 
@@ -38,6 +38,11 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
+
+      - name: Reinstall Werkzeug
+        run: |
+          pip uninstall werkzeug
+          pip install werkzeug
 
       - name: Run Pysa
         uses: facebook/pysa-action@f46a63777e59268613bd6e2ff4e29f144ca9e88b
