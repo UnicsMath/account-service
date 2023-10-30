@@ -5,10 +5,7 @@ WORKDIR /account_service
 COPY requirements.txt .
 
 RUN apk update && \
-    apk add --no-cache freetds-dev && \
-    apk add --no-cache --virtual .build-deps build-base && \
-    apk add --no-cache openssl-dev libffi-dev && \
-    apk add --no-cache krb5-dev && \
+    apk add --no-cache freetds-dev build-base openssl-dev libffi-dev krb5-dev && \
     pip install --upgrade pip && \
     pip install --no-cache-dir --upgrade -r requirements.txt
 

@@ -1,4 +1,3 @@
-from datetime import timedelta
 from typing import Optional
 
 from fastapi import HTTPException, status
@@ -18,7 +17,6 @@ from models.account_model import AccountModel
 from utilities.security import (
     verify_hashes,
     create_access_token,
-    ACCESS_TOKEN_EXPIRE_MINUTES,
 )
 
 
@@ -37,10 +35,7 @@ class AccountController(IAccountController):
                 detail="Incorrect username or password",
                 headers={"WWW-Authenticate": "Bearer"},
             )
-        access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-        access_token: str = create_access_token(
-            data={"sub": user.username}, expires_delta=access_token_expires
-        )
+        access_token: str = create_access_token(data={"sub": user.username})
         return TokenSchema(access_token=access_token, token_type="bearer")
 
     def __authenticate_account(
