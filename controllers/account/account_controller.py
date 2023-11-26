@@ -13,10 +13,12 @@ from controllers.account.iaccount_controller import (
 )
 
 from models.account_model import AccountModel
+from schemas.account_schema import AccountBaseSchema
 
 from utilities.security import (
     verify_hashes,
     create_access_token,
+    credentials_exception,
 )
 
 
@@ -46,4 +48,13 @@ class AccountController(IAccountController):
             return None
         if not verify_hashes(password, user.hashed_passcode):
             return None
+        return user
+
+    def authorization(self, decoded_jwt: dict, db: Session) -> AccountBaseSchema:
+        username: str = decoded_jwt.get("sub")
+        if username is None:
+            raise credentials_exception
+        user = self.__account_repository.get_by_username(db, username)
+        if user is None:
+            raise credentials_exception
         return user
